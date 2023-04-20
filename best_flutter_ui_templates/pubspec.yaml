@@ -32,6 +32,11 @@ dependencies:
     flutter_rating_bar: ^4.0.1
     intl: ^0.17.0
     animations: ^2.0.3
+    # google_fonts: ^4.0.3
+    flutter_screenutil: ^5.7.0
+    carousel_slider: ^4.2.1
+    provider: ^6.0.5
+    # device_preview: ^1.1.0
 
 dev_dependencies:
     flutter_test:
@@ -82,6 +87,17 @@ flutter:
               - asset: assets/fonts/Roboto-Regular.ttf
               - asset: assets/fonts/Roboto-Medium.ttf
                 weight: 400
+        - family: GothamPro
+          fonts:
+            - asset: assets/fonts/GothamProBlack.ttf
+              weight: 900
+            - asset: assets/fonts/GothamProLight.ttf
+              weight: 300
+            - asset: assets/fonts/GothamProMedium.ttf
+              weight: 500
+            - asset: assets/fonts/GothamProRegular.ttf
+              weight: 400
+
     #
     # For details regarding fonts from package dependencies,
     # see https://flutter.dev/custom-fonts/#from-packages

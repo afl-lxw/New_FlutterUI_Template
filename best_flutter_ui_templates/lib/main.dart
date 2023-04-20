@@ -4,16 +4,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'menu_config/navigation_home_screen.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:provider/provider.dart';
+import 'package:best_flutter_ui_templates/tesla_app/util/price_tracker.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
-  ]).then((_) => runApp(MyApp()));
+  ]).then((_) => runApp(MultiProvider(providers: [
+        ChangeNotifierProvider(
+          create: (context) => PriceTracker(),
+        )
+      ], child: const MyApp())));
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
