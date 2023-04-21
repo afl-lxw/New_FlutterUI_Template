@@ -4,6 +4,7 @@ import 'package:best_flutter_ui_templates/design_course/popular_course_list_view
 import 'package:best_flutter_ui_templates/main.dart';
 import 'package:flutter/material.dart';
 import 'design_course_app_theme.dart';
+import 'dart:ui';
 
 class DesignCourseHomeScreen extends StatefulWidget {
   @override
@@ -24,7 +25,10 @@ class _DesignCourseHomeScreenState extends State<DesignCourseHomeScreen> {
             SizedBox(
               height: MediaQuery.of(context).padding.top,
             ),
-            getAppBarUI(),
+            Opacity(
+              opacity: 1,
+              child: getAppBarUI(),
+            ),
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
@@ -260,44 +264,49 @@ class _DesignCourseHomeScreenState extends State<DesignCourseHomeScreen> {
   }
 
   Widget getAppBarUI() {
-    return Padding(
+    return Container(
+      width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.only(top: 8.0, left: 18, right: 18),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'Choose your',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                    letterSpacing: 0.2,
-                    color: DesignCourseAppTheme.grey,
+      decoration: BoxDecoration(),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 50.0, sigmaY: 50.0),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'Choose your',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                      letterSpacing: 0.2,
+                      color: DesignCourseAppTheme.grey,
+                    ),
                   ),
-                ),
-                Text(
-                  'Design Course',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22,
-                    letterSpacing: 0.27,
-                    color: DesignCourseAppTheme.darkerText,
+                  Text(
+                    'Design Course',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                      letterSpacing: 0.27,
+                      color: DesignCourseAppTheme.darkerText,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Container(
-            width: 60,
-            height: 60,
-            child: Image.asset('assets/design_course/userImage.png'),
-          )
-        ],
+            Container(
+              width: 60,
+              height: 60,
+              child: Image.asset('assets/design_course/userImage.png'),
+            )
+          ],
+        ),
       ),
     );
   }
