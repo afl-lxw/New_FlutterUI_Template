@@ -3,6 +3,7 @@ import 'package:best_flutter_ui_templates/fitness_app/fitness_app_home_screen.da
 import 'package:best_flutter_ui_templates/hotel_booking/hotel_home_screen.dart';
 import 'package:best_flutter_ui_templates/introduction_animation/introduction_animation_screen.dart';
 import 'package:best_flutter_ui_templates/tesla_app/tesla_home.dart';
+import 'package:best_flutter_ui_templates/figma_dinvset/dinvset.dart';
 import 'package:flutter/widgets.dart';
 
 class HomeList {
@@ -34,6 +35,10 @@ class HomeList {
     HomeList(
       imagePath: 'assets/tesla/car_image.png',
       navigateScreen: TeslaHomePage(),
+    ),
+    HomeList(
+      imagePath: 'assets/dinvset/dinvset.png',
+      navigateScreen: DinvsetHome(),
     ),
   ];
 }
