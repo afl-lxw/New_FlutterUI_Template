@@ -14,7 +14,7 @@ class _dinvsetHomeState extends State<DinvsetHome> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/car_summary.png'),
+          image: AssetImage('assets/images/userBg.png'),
           fit: BoxFit.cover,
         ),
       ),
