@@ -36,6 +36,18 @@ class _DrawerUserControllerState extends State<DrawerUserController>
 
   @override
   void initState() {
+    /*以下代码的解释：
+      1.我有两个动画控制器：一个用于抽屉，一个用于图标。
+      2.我有一个滚动控制器来控制抽屉。
+      3.我有一个状态变量“scrolloffset”，用于检查抽屉是打开还是关闭。
+      4.我有一个try-catch语句，因为“drawerIsOpen”参数可以为null。
+      5.我有一个监听器，它检查滚动控制器的偏移量是否小于0（抽屉打开），或者偏移量是否大于0（抽屉关闭），或者偏置量是否在0和drawerWidth之间（抽屉打开或关闭）。
+      6.如果抽屉正在打开或关闭，则图标的动画控制器设置为滚动控制器的偏移除以drawerWidth。
+      7.如果抽屉处于打开状态，则图标的动画控制器设置为0.0。
+      8.如果抽屉关闭，则图标的动画控制器设置为1.0。
+      9.如果抽屉是打开的，则状态变量“scrolloffset”设置为1.0，如果不为null，则调用“drawerIsOpen”回调。
+      10.如果抽屉关闭，则状态变量“scrolloffset”设置为0.0，如果不为null，则调用“drawerIsOpen”回调
+    */
     animationController = AnimationController(
         duration: const Duration(milliseconds: 2000), vsync: this);
     iconAnimationController = AnimationController(
@@ -48,7 +60,14 @@ class _DrawerUserControllerState extends State<DrawerUserController>
         ScrollController(initialScrollOffset: widget.drawerWidth);
     scrollController!
       ..addListener(() {
+        /* 
+          抽屉逐渐合上  此值会越来越大  
+          抽屉逐渐打开  此值会越来越小
+          initialScrollOffset: 抽屉的初始长度
+        */
+        print('-----scrollController-----${scrollController}');
         if (scrollController!.offset <= 0) {
+          // 打开状态
           if (scrolloffset != 1.0) {
             setState(() {
               scrolloffset = 1.0;
@@ -62,11 +81,13 @@ class _DrawerUserControllerState extends State<DrawerUserController>
               curve: Curves.fastOutSlowIn);
         } else if (scrollController!.offset > 0 &&
             scrollController!.offset < widget.drawerWidth.floor()) {
+          print('拖拉ing');
           iconAnimationController?.animateTo(
               (scrollController!.offset * 100 / (widget.drawerWidth)) / 100,
               duration: const Duration(milliseconds: 0),
               curve: Curves.fastOutSlowIn);
         } else {
+          print('else------关闭抽屉');
           if (scrolloffset != 0.0) {
             setState(() {
               scrolloffset = 0.0;
