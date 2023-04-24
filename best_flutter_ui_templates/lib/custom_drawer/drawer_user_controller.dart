@@ -65,7 +65,6 @@ class _DrawerUserControllerState extends State<DrawerUserController>
           抽屉逐渐打开  此值会越来越小
           initialScrollOffset: 抽屉的初始长度
         */
-        print('-----scrollController-----${scrollController}');
         if (scrollController!.offset <= 0) {
           // 打开状态
           if (scrolloffset != 1.0) {
@@ -101,6 +100,11 @@ class _DrawerUserControllerState extends State<DrawerUserController>
               curve: Curves.fastOutSlowIn);
         }
       });
+    // ..addStatusListener((status) {
+    //   if (status == AnimationStatus.completed) {
+
+    //   }
+    // });
     WidgetsBinding.instance.addPostFrameCallback((_) => getInitState());
     super.initState();
   }
