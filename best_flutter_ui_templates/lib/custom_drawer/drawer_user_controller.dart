@@ -36,7 +36,7 @@ class _DrawerUserControllerState extends State<DrawerUserController>
 
   @override
   void initState() {
-    /*以下代码的解释：
+    /*以下代码的解释：-
       1.我有两个动画控制器：一个用于抽屉，一个用于图标。
       2.我有一个滚动控制器来控制抽屉。
       3.我有一个状态变量“scrolloffset”，用于检查抽屉是打开还是关闭。
