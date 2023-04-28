@@ -86,7 +86,7 @@ class _DrawerUserControllerState extends State<DrawerUserController>
               duration: const Duration(milliseconds: 0),
               curve: Curves.fastOutSlowIn);
         } else {
-          print('else-----关闭抽屉');
+          print('else------关闭抽屉');
           if (scrolloffset != 0.0) {
             setState(() {
               scrolloffset = 0.0;
