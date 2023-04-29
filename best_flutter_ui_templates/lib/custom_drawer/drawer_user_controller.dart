@@ -31,7 +31,6 @@ class _DrawerUserControllerState extends State<DrawerUserController>
   ScrollController? scrollController;
   AnimationController? iconAnimationController;
   AnimationController? animationController;
-
   double scrolloffset = 0.0;
 
   @override
@@ -80,13 +79,13 @@ class _DrawerUserControllerState extends State<DrawerUserController>
               curve: Curves.fastOutSlowIn);
         } else if (scrollController!.offset > 0 &&
             scrollController!.offset < widget.drawerWidth.floor()) {
-          print('拖拉ing');
+          // print('拖拉ing');
           iconAnimationController?.animateTo(
               (scrollController!.offset * 100 / (widget.drawerWidth)) / 100,
               duration: const Duration(milliseconds: 0),
               curve: Curves.fastOutSlowIn);
         } else {
-          print('else------关闭抽屉');
+          // print('else------关闭抽屉');
           if (scrolloffset != 0.0) {
             setState(() {
               scrolloffset = 0.0;
@@ -106,6 +105,7 @@ class _DrawerUserControllerState extends State<DrawerUserController>
     //   }
     // });
     WidgetsBinding.instance.addPostFrameCallback((_) => getInitState());
+    // print('widget.screenIndex: ------------${widget.screenIndex}');
     super.initState();
   }
 
@@ -149,6 +149,7 @@ class _DrawerUserControllerState extends State<DrawerUserController>
                             : widget.screenIndex,
                         iconAnimationController: iconAnimationController,
                         callBackIndex: (DrawerIndex indexType) {
+                          print('indexType---==================$indexType');
                           onDrawerClick();
                           try {
                             widget.onDrawerCall!(indexType);

@@ -66,7 +66,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
   Widget build(BuildContext context) {
     var brightness = MediaQuery.of(context).platformBrightness;
     bool isLightMode = brightness == Brightness.light;
-    print('iconAnimationController--->${widget.iconAnimationController}');
+    // print('iconAnimationController--->${widget.iconAnimationController}');
     return Scaffold(
       backgroundColor: AppTheme.notWhite.withOpacity(0.5),
       body: Column(
