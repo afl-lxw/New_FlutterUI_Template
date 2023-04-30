@@ -47,6 +47,14 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
         child: Scaffold(
           body: Stack(
             children: <Widget>[
+              /*
+                1.为了拥有一个没有波纹效应的可点击按钮，我们需要使用“InkWell”或“GestureDetector”。
+                2.然而，“InkWell”或“GestureDetector”将不能与“TextField”或“TextFormField”一起使用，因为它们有自己的“Gesture Detector“来处理焦点和文本选择。
+                3.如果我们想将“InkWell”或“GestureDetector”与“TextField”或“TextFormField”一起使用，我们必须通过将“onTap”设置为“（）｛｝”来禁用“TextField’或“TextForm Field”中的“Gesture Detector’”。
+                4.问题是，如果我们将“onTap”设置为“（）｛｝”，“TextField”或“TextFormField”将不再可聚焦。
+                5.为了解决这个问题，我们可以用另一个“手势检测器”包装“TextField”或“TextFormField”，并将“onTap”设置为“（）=>FocusScope.of（context）.requestFocus（FocusNode（））”。
+                6.这样，即使“手势检测器”被禁用，我们仍然可以使“TextField”或“TextFormField”可聚焦
+              */
               InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
