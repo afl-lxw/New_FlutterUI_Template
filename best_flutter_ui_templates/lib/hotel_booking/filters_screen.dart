@@ -20,6 +20,12 @@ class _FiltersScreenState extends State<FiltersScreen> {
   double distValue = 50.0;
 
   @override
+  void initState() {
+    super.initState();
+    print('输出打印appBar()-------$AppBar()');
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       color: HotelAppTheme.buildLightTheme().backgroundColor,
